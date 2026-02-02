@@ -204,13 +204,17 @@ const parseEventsData = (settings: Partial<DynamicSettings>): AppConfig["events"
     const heroDate = settings.hero_date; // Expected YYYY-MM-DD
 
     // Helper to sync a Date object with a YYYY-MM-DD string
+    // Only if it's the absolute default date
     const syncWithHeroDate = (dateObj: Date, heroDateStr: string | undefined): Date => {
         if (!heroDateStr) return dateObj;
         try {
             const [y, m, d] = heroDateStr.split("-").map(Number);
             const result = new Date(dateObj);
             if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
-                result.setFullYear(y, m - 1, d);
+                // Only overwrite if it matches the fallback default 2025-10-11
+                if (dateObj.getFullYear() === 2025 && dateObj.getMonth() === 9 && dateObj.getDate() === 11) {
+                    result.setFullYear(y, m - 1, d);
+                }
             }
             return result;
         } catch {
@@ -231,8 +235,9 @@ const parseEventsData = (settings: Partial<DynamicSettings>): AppConfig["events"
                 date: e.date,
                 startTime: e.startTime,
                 endTime: e.endTime,
-                startDateTime: syncWithHeroDate(e.isoStart ? new Date(e.isoStart) : new Date(), heroDate),
-                endDateTime: syncWithHeroDate(e.isoEnd ? new Date(e.isoEnd) : new Date(), heroDate),
+                // Don't sync modern JSON events with heroDate if they already have valid dates
+                startDateTime: e.isoStart ? new Date(e.isoStart) : new Date(),
+                endDateTime: e.isoEnd ? new Date(e.isoEnd) : new Date(),
                 side: (e.side as "pria" | "wanita" | "both") || "both",
                 venue: {
                     name: e.venueName,
@@ -301,6 +306,12 @@ const parseEventsData = (settings: Partial<DynamicSettings>): AppConfig["events"
 
 // Convert database settings to AppConfig
 const settingsToConfig = (settings: Partial<DynamicSettings>): AppConfig => {
+    const events = parseEventsData(settings);
+    // If hero_date is missing but we have events, use the first event's date
+    const heroDisplayDate = settings.hero_date
+        ? formatHeroDate(settings.hero_date)
+        : (events.length > 0 ? events[0].date : WEDDING_CONFIG.events.akad.date);
+
     return {
         couple: {
             bride: {
@@ -318,11 +329,11 @@ const settingsToConfig = (settings: Partial<DynamicSettings>): AppConfig => {
                 instagram: settings.groom_instagram || WEDDING_CONFIG.couple.groom.instagram,
             },
         },
-        events: parseEventsData(settings),
+        events,
         hero: {
             image: settings.hero_image || WEDDING_CONFIG.hero.image,
             city: settings.hero_city || WEDDING_CONFIG.hero.city,
-            date: formatHeroDate(settings.hero_date) || WEDDING_CONFIG.events.akad.date,
+            date: heroDisplayDate,
         },
         musicUrl: settings.music_url || MUSIC_URL,
         maxGuests: parseInt(settings.max_guests || String(MAX_GUESTS), 10),
