@@ -141,15 +141,15 @@ const AppContent: React.FC = () => {
 
       <MusicPlayer />
 
-      {/* Floating Controllers Container (Samping Kanan Tengah) */}
-      <div className="fixed right-4 top-1/2 z-[1000] -translate-y-1/2 flex flex-col items-center gap-4">
+      {/* Floating Controllers Container (Samping Kanan) */}
+      <div className="fixed right-2 bottom-32 z-[1000] flex flex-col items-center gap-3 transition-all duration-500 md:right-4 md:top-1/2 md:bottom-auto md:-translate-y-1/2 md:gap-4">
         {/* Scroll to Top (Custom Boxy Style) */}
         {isOpened && (
           <button
             onClick={scrollToTop}
-            className="group flex h-14 w-12 flex-col items-center justify-center gap-1 rounded-tl-2xl rounded-tr-sm rounded-bl-sm rounded-br-2xl border border-white/20 bg-white/80 shadow-xl backdrop-blur-md transition-all duration-300 hover:bg-white dark:bg-slate-900/80 dark:hover:bg-slate-900"
+            className="group flex h-11 w-10 flex-col items-center justify-center gap-1 rounded-tl-xl rounded-tr-sm rounded-bl-sm rounded-br-xl border border-white/20 bg-white/80 shadow-xl backdrop-blur-md transition-all duration-300 hover:bg-white md:h-14 md:w-12 md:rounded-tl-2xl md:rounded-br-2xl dark:bg-slate-900/80 dark:hover:bg-slate-900"
           >
-            <ChevronUp className="h-5 w-5 text-slate-700 dark:text-white transition-transform group-hover:-translate-y-1" />
+            <ChevronUp className="h-4 w-4 text-slate-700 dark:text-white transition-transform group-hover:-translate-y-1 md:h-5 md:w-5" />
           </button>
         )}
 

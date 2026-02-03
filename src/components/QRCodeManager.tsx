@@ -1,12 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import * as React from "react";
 import { useState, useRef, useMemo } from "react";
-// @ts-expect-error - qrcode.react v4 has bundled types that TS doesn't recognize
 import { QRCodeCanvas } from "qrcode.react";
 import * as Papa from "papaparse";
 import JSZip from "jszip";
 import FileSaver from "file-saver";
-const { saveAs } = FileSaver;
 import {
   Download,
   Upload,

@@ -99,36 +99,36 @@ const EventDetails: React.FC = () => {
                 className="editorial-card dark:bg-darkSurface group relative flex flex-col overflow-visible rounded-[2.5rem] bg-white md:rounded-[4rem]"
               >
                 {/* Floating Icon */}
-                <div className="bg-accentDark/10 dark:bg-accent/10 text-accentDark dark:text-accent animate-float absolute -top-4 -right-4 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 backdrop-blur-md md:-top-6 md:-right-6 md:h-16 md:w-16 dark:border-white/5">
+                <div className="bg-accentDark/10 dark:bg-accent/10 text-accentDark dark:text-accent animate-float absolute -top-3 -right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 backdrop-blur-md md:-top-6 md:-right-6 md:h-16 md:w-16 dark:border-white/5">
                   {index === 0 ? (
-                    <Heart className="h-5 w-5 fill-current md:h-7 md:w-7" />
+                    <Heart className="h-4 w-4 fill-current md:h-7 md:w-7" />
                   ) : (
-                    <Sparkles className="h-5 w-5 md:h-7 md:w-7" />
+                    <Sparkles className="h-4 w-4 md:h-7 md:w-7" />
                   )}
                 </div>
 
                 {/* Event Info Section */}
-                <div className="space-y-8 p-8 text-center md:space-y-12 md:p-12">
-                  <div className="space-y-2 md:space-y-4">
-                    <span className="tracking-luxury text-accentDark dark:text-accent text-[9px] font-bold uppercase md:text-[10px]">
+                <div className="space-y-6 p-6 text-center md:space-y-12 md:p-12">
+                  <div className="space-y-1.5 md:space-y-4">
+                    <span className="tracking-luxury text-accentDark dark:text-accent text-[8px] font-bold uppercase md:text-[10px]">
                       Our Sacred Day
                     </span>
-                    <h3 className="font-serif text-3xl leading-tight text-slate-900 italic md:text-5xl dark:text-white">
+                    <h3 className="font-serif text-2xl leading-tight text-slate-900 italic md:text-5xl dark:text-white">
                       {ev.title}
                     </h3>
                   </div>
 
-                  <div className="w-full space-y-6 border-y border-slate-100 py-8 md:space-y-8 md:py-10 dark:border-white/5">
-                    <div className="flex flex-col items-center justify-center gap-3 font-serif text-xl text-slate-700 italic md:text-2xl dark:text-slate-100">
-                      <div className="flex items-center gap-3 md:gap-4">
-                        <Calendar className="text-accentDark dark:text-accent h-5 w-5 md:h-6 md:w-6" />
+                  <div className="w-full space-y-4 border-y border-slate-100 py-6 md:space-y-8 md:py-10 dark:border-white/5">
+                    <div className="flex flex-col items-center justify-center gap-2 font-serif text-lg text-slate-700 italic md:text-2xl dark:text-slate-100">
+                      <div className="flex items-center gap-2 md:gap-4">
+                        <Calendar className="text-accentDark dark:text-accent h-4 w-4 md:h-6 md:w-6" />
                         <span>
                           {ev.day}, {ev.date}
                         </span>
                       </div>
                     </div>
-                    <div className="tracking-editorial flex items-center justify-center gap-3 text-[11px] font-bold text-slate-400 uppercase md:gap-4 md:text-[12px] dark:text-slate-500">
-                      <Clock className="text-accentDark dark:text-accent h-4 w-4 md:h-5 md:w-5" />
+                    <div className="tracking-editorial flex items-center justify-center gap-2 text-[10px] font-bold text-slate-400 uppercase md:gap-4 md:text-[12px] dark:text-slate-500">
+                      <Clock className="text-accentDark dark:text-accent h-3.5 w-3.5 md:h-5 md:w-5" />
                       <span>
                         {ev.startTime} — {ev.endTime} WIB
                       </span>
@@ -176,16 +176,16 @@ const EventDetails: React.FC = () => {
                 </div>
 
                 {/* Venue Section */}
-                <div className="space-y-6 border-t border-slate-100 p-8 md:space-y-8 md:p-12 dark:border-white/5">
-                  <div className="flex items-start gap-4 md:items-center md:gap-6">
-                    <div className="text-accentDark dark:text-accent flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl border border-slate-100 bg-slate-50 shadow-lg md:h-14 md:w-14 dark:border-white/10 dark:bg-white/5">
-                      <MapPin className="h-6 w-6 md:h-7 md:w-7" />
+                <div className="space-y-5 border-t border-slate-100 p-6 md:space-y-8 md:p-12 dark:border-white/5">
+                  <div className="flex items-start gap-3 md:items-center md:gap-6">
+                    <div className="text-accentDark dark:text-accent flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-slate-50 shadow-lg md:h-14 md:w-14 dark:border-white/10 dark:bg-white/5">
+                      <MapPin className="h-5 w-5 md:h-7 md:w-7" />
                     </div>
-                    <div className="min-w-0 flex-1 space-y-1">
-                      <h4 className="font-serif text-xl leading-tight tracking-tight text-slate-900 italic md:text-2xl dark:text-white">
+                    <div className="min-w-0 flex-1 space-y-0.5">
+                      <h4 className="font-serif text-lg leading-tight tracking-tight text-slate-900 italic md:text-2xl dark:text-white">
                         {ev.venue.name}
                       </h4>
-                      <p className="text-sm leading-snug font-light text-slate-500 italic md:text-base dark:text-slate-400">
+                      <p className="text-xs leading-snug font-light text-slate-500 italic md:text-base dark:text-slate-400">
                         {ev.venue.address}
                       </p>
                     </div>

@@ -31,21 +31,21 @@ const MusicController: React.FC = () => {
         >
             <button
                 onClick={toggleMusic}
-                className={`group relative flex h-12 w-12 items-center justify-center rounded-full bg-white/80 transition-all duration-500 hover:scale-110 hover:bg-white dark:bg-slate-900/80 dark:hover:bg-slate-900 frosted-glass shadow-xl border border-white/20`}
+                className={`group relative flex h-10 w-10 items-center justify-center rounded-full bg-white/80 transition-all duration-500 hover:scale-110 hover:bg-white md:h-12 md:w-12 dark:bg-slate-900/80 dark:hover:bg-slate-900 frosted-glass shadow-xl border border-white/20`}
             >
                 {/* Vinyl Disk Visual */}
                 <div className={`absolute inset-1 rounded-full border-2 border-slate-200 dark:border-slate-700 ${isPlaying ? "animate-spin-slow" : ""}`}>
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-2 w-2 rounded-full bg-accent"></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full bg-accent md:h-2 md:w-2"></div>
                 </div>
 
                 <div className="relative z-10 text-slate-700 dark:text-white">
                     {isPlaying ? (
                         <div className="relative">
-                            <Music className="h-5 w-5 animate-pulse-soft" />
-                            <div className="absolute -top-1 -right-2 text-[8px] font-bold">ON</div>
+                            <Music className="h-4 w-4 animate-pulse-soft md:h-5 md:w-5" />
+                            <div className="absolute -top-1 -right-2 text-[6px] font-bold md:text-[8px]">ON</div>
                         </div>
                     ) : (
-                        <Play className="h-5 w-5 ml-0.5" />
+                        <Play className="h-4 w-4 ml-0.5 md:h-5 md:w-5" />
                     )}
                 </div>
 
